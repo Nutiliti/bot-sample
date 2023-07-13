@@ -1,0 +1,15 @@
+version: "2.0"
+services:
+  node-bot-dev:
+    # Runs bots with hidden virtual display using Xvfb
+    build:
+      context: .
+      dockerfile: ./bots/pdfDownloaderNode/Dockerfile.dev
+    platform: linux/amd64
+    ports:
+      - "9229:9229"
+    environment:
+      - DISPLAY=:99
+    volumes:
+      - ./bots/pdfDownloaderNode/src:/app/bots/pdfDownloaderNode/src
+      - ./bots/pdfDownloaderNode/.env:/app/bots/pdfDownloaderNode/.env

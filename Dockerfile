@@ -8,7 +8,6 @@ RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" |
   apt-key add - && \
   apt-get update && \
   apt-get install -y google-chrome-stable google-chrome-beta xvfb libxss1 python3 python3-pip sudo libxtst-dev libpng++-dev
-# libxtst-dev libpng++-dev packages are required for @nut-tree/libnut-linux module
 
 COPY ./bots/pdfDownloaderNode/requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
@@ -32,4 +31,4 @@ ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 RUN echo "pnpm build && pnpm start" > /root/.bash_history
 WORKDIR /app/bots/pdfDownloaderNode
 # Run command
-CMD ["/bin/bash", "./run-dev.sh"]
+CMD ["/bin/bash", "./run.sh"]
